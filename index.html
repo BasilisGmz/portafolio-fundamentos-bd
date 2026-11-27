@@ -4,29 +4,68 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fundamentos de Base de Datos | Portafolio</title>
+
+<title>Fundamentos de Base de Datos | Portafolio Digital</title>
+
+<!-- TIPOGRAFÍAS ROBÓTICAS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+
+/* =================================
+   1. CONFIGURACIÓN GENERAL
+================================= */
+
 :root {
-  --bg:#080e1b;
-  --panel:#111d31;
-  --panel2:#192943;
-  --accent:#ffad32;
-  --cyan:#31d9ef;
-  --text:#edf4ff;
-  --muted:#9aacc5;
+  --bg:#080B18;
+  --panel:#10152D;
+  --panel2:#192544;
+  --pink:#FF2BD6;
+  --blue:#00E5FF;
+  --text:#F3F5FF;
+  --muted:#A6B4D1;
+  --border:#234c75;
 }
-* {box-sizing:border-box}
+
+* {
+  box-sizing:border-box;
+}
 
 body {
   margin:0;
-  font-family:Arial,sans-serif;
-  background:var(--bg);
+  font-family:'Rajdhani',sans-serif;
+  background:
+    radial-gradient(ellipse at top,#17254b,#080B18 75%);
   color:var(--text);
   min-height:100vh;
+  font-size:17px;
 }
 
-/* PANTALLA PRINCIPAL DEL JUEGO */
+button,
+a {
+  font-family:'Rajdhani',sans-serif;
+}
+
+button {
+  cursor:pointer;
+}
+
+h1,h2,h3,
+.brand,
+.game-content h1,
+.game-label,
+.tag,
+.nav button,
+.game-button,
+.status {
+  font-family:'Orbitron',sans-serif;
+}
+
+/* =================================
+   2. PANTALLA INICIAL VIDEOJUEGO
+================================= */
 
 #gameScreen {
   min-height:100vh;
@@ -37,89 +76,172 @@ body {
   padding:25px;
   position:relative;
   overflow:hidden;
+
   background:
-    radial-gradient(ellipse at 50% 80%,#285078 0%,transparent 48%),
-    radial-gradient(circle at 15% 20%,#245477 0%,transparent 35%),
-    linear-gradient(145deg,#050b19,#142d4b 55%,#080e1b);
+    radial-gradient(circle at 20% 20%,#242052 0%,transparent 35%),
+    radial-gradient(circle at 80% 80%,#073b62 0%,transparent 40%),
+    linear-gradient(145deg,#050817,#10152D 55%,#080B18);
 }
+
+/* CÍRCULOS FUTURISTAS */
 
 #gameScreen:before,
 #gameScreen:after {
   content:"";
   position:absolute;
   border-radius:50%;
-  border:1px solid #31d9ef55;
+  border:1px solid #00E5FF55;
   width:400px;
   height:400px;
-  box-shadow:0 0 0 35px #31d9ef0c,
-             0 0 0 75px #31d9ef08;
+
+  box-shadow:
+    0 0 0 35px #00E5FF0c,
+    0 0 0 75px #FF2BD608;
 }
-#gameScreen:before {top:-230px;left:-150px}
-#gameScreen:after {bottom:-280px;right:-120px}
+
+#gameScreen:before {
+  top:-230px;
+  left:-150px;
+}
+
+#gameScreen:after {
+  bottom:-280px;
+  right:-120px;
+}
 
 .game-content {
   position:relative;
   z-index:2;
-  width:min(650px,100%);
-  padding:45px 20px;
-  background:#091427bb;
-  border:1px solid #47668b;
+  width:min(680px,100%);
+  padding:50px 25px;
+
+  background:#091427dd;
+  border:1px solid #00E5FF66;
   border-radius:22px;
-  box-shadow:0 20px 70px #0009;
-  backdrop-filter:blur(10px);
+
+  box-shadow:
+    0 0 25px #00E5FF22,
+    0 0 45px #FF2BD622,
+    0 20px 70px #0009;
+
+  backdrop-filter:blur(12px);
 }
 
 .game-icon {
-  font-size:65px;
-  margin-bottom:10px;
-  filter:drop-shadow(0 0 15px #ffad3277);
+  font-size:70px;
+  margin-bottom:15px;
+
+  filter:
+    drop-shadow(0 0 12px #FF2BD6)
+    drop-shadow(0 0 20px #00E5FF);
 }
 
 .game-label {
-  color:var(--cyan);
+  color:var(--blue);
   letter-spacing:5px;
   font-size:12px;
   font-weight:bold;
+  text-shadow:0 0 12px #00E5FF;
 }
 
 .game-content h1 {
-  color:var(--accent);
-  font-size:clamp(30px,6vw,50px);
-  line-height:1.15;
-  margin:20px 0;
-  text-shadow:0 0 20px #ffad3255;
+  color:var(--pink);
+  font-size:clamp(27px,6vw,48px);
+  line-height:1.3;
+  margin:25px 0;
+
+  text-shadow:
+    0 0 10px #FF2BD6,
+    0 0 25px #FF2BD688;
 }
 
 .game-content p {
   color:#c2d4ed;
-  line-height:1.7;
+  line-height:1.8;
+  font-size:19px;
   margin-bottom:30px;
 }
 
 .game-button {
   display:block;
-  width:min(330px,100%);
-  margin:13px auto;
-  padding:16px;
-  border:1px solid #ffbd56;
+  width:min(350px,100%);
+  margin:15px auto;
+  padding:17px;
+
+  border:1px solid var(--blue);
   border-radius:10px;
-  color:#fff;
-  background:linear-gradient(100deg,#9d5d18,#49341d);
-  font-size:15px;
+
+  color:white;
+  background:linear-gradient(100deg,#a719a0,#2454a8);
+
+  font-size:14px;
   font-weight:bold;
-  cursor:pointer;
+  letter-spacing:2px;
+
+  box-shadow:0 0 15px #00E5FF33;
   transition:.25s;
 }
+
 .game-button:hover {
   transform:scale(1.04);
-  box-shadow:0 0 25px #ffad3266;
-}
-.game-button.secondary {
-  background:#192c47;
-  border-color:#436587;
+  border-color:var(--pink);
+  box-shadow:0 0 25px #FF2BD688;
 }
 
-/* APLICACIÓN */
+.game-button.secondary {
+  background:#111e39;
+  border-color:var(--pink);
+  color:var(--pink);
+}
+
+.game-footer {
+  color:#829bb8;
+  font-size:12px;
+  letter-spacing:3px;
+  margin-top:30px;
+}
+
+/* =================================
+   3. VENTANA DE INSTRUCCIONES
+================================= */
+
+#instructions {
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:20;
+
+  background:#000c;
+
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.instruction-box {
+  max-width:480px;
+  width:100%;
+  padding:28px;
+
+  background:#14243b;
+  border:1px solid var(--blue);
+  border-radius:15px;
+
+  box-shadow:0 0 25px #00E5FF44;
+}
+
+.instruction-box h2 {
+  color:var(--pink);
+}
+
+.instruction-box p {
+  line-height:1.8;
+  color:#d1def0;
+}
+
+/* =================================
+   4. APLICACIÓN DEL PORTAFOLIO
+================================= */
 
 #app {
   display:none;
@@ -131,74 +253,114 @@ body {
   min-height:100vh;
 }
 
+/* =================================
+   5. MENÚ LATERAL
+================================= */
+
 .sidebar {
   width:285px;
   flex-shrink:0;
-  background:rgba(9,17,32,.98);
-  border-right:1px solid #29405e;
-  padding:20px 14px;
+
+  background:rgba(9,14,32,.98);
+  border-right:1px solid #00E5FF55;
+
+  padding:22px 15px;
+
   display:flex;
   flex-direction:column;
-  gap:18px;
+  gap:20px;
+
+  box-shadow:5px 0 25px #0004;
 }
 
 .brand {
-  color:var(--accent);
-  font-size:23px;
-  line-height:1.25;
+  color:var(--pink);
+  font-size:22px;
+  line-height:1.5;
   font-weight:900;
   text-align:center;
-  text-shadow:0 0 15px #ffad3266;
-  padding:15px 5px;
-  border-bottom:1px solid #31435c;
+
+  text-shadow:
+    0 0 10px #FF2BD6,
+    0 0 20px #FF2BD655;
+
+  padding:18px 5px;
+  border-bottom:1px solid #00E5FF55;
 }
 
 .nav {
   display:grid;
-  gap:10px;
+  gap:11px;
 }
 
 .nav button {
   text-align:left;
-  padding:14px 12px;
+  padding:15px 12px;
+
   color:#dce9fa;
-  background:linear-gradient(110deg,#17263d,#101a2c);
-  border:1px solid #2b4565;
+
+  background:linear-gradient(110deg,#17213d,#101a2c);
+
+  border:1px solid #29496a;
   border-radius:10px;
+
   cursor:pointer;
-  font-size:14px;
-  transition:.2s;
+  font-size:12px;
+  letter-spacing:.4px;
+
+  transition:.25s;
 }
 
 .nav button:hover,
 .nav button.active {
-  color:#fff;
-  border-color:var(--accent);
-  background:linear-gradient(100deg,#49341d,#1b2a40);
+  color:white;
+
+  border-color:var(--pink);
+
+  background:linear-gradient(100deg,#421747,#142746);
+
   transform:translateX(4px);
-  box-shadow:0 0 14px #ffad3230;
+
+  box-shadow:
+    0 0 12px #FF2BD655,
+    inset 0 0 10px #00E5FF11;
 }
 
 .nav button span {
-  color:var(--accent);
+  color:var(--blue);
   margin-right:7px;
+}
+
+.back-button {
+  border:1px solid var(--blue);
+  border-radius:8px;
+
+  background:#10233c;
+  color:var(--blue);
+
+  padding:12px;
+  font-size:13px;
+  letter-spacing:1px;
+
+  transition:.2s;
+}
+
+.back-button:hover {
+  background:#183d5c;
+  box-shadow:0 0 15px #00E5FF44;
 }
 
 .side-note {
   color:var(--muted);
-  font-size:11px;
+  font-size:12px;
+  letter-spacing:2px;
   margin-top:auto;
   text-align:center;
 }
 
-.back-button {
-  border:1px solid #385471;
-  border-radius:8px;
-  background:#192b43;
-  color:white;
-  padding:11px;
-  cursor:pointer;
-}
+/* =================================
+   6. PANEL DERECHO
+================================= */
 
 main {
   flex:1;
@@ -216,195 +378,324 @@ main {
 }
 
 .tag {
-  color:var(--cyan);
+  color:var(--blue);
   font-size:12px;
-  letter-spacing:3px;
+  letter-spacing:4px;
   font-weight:bold;
+
+  text-shadow:0 0 12px #00E5FF77;
 }
 
 h1 {
   font-size:clamp(24px,4vw,38px);
-  margin:8px 0;
+  margin:10px 0;
+  color:var(--text);
+
+  text-shadow:0 0 12px #00E5FF44;
 }
 
 .subtitle {
   color:var(--muted);
-  font-size:14px;
+  font-size:17px;
 }
 
 .status {
-  color:#7df0b0;
-  border:1px solid #286b50;
-  background:#123328;
+  color:var(--blue);
+  border:1px solid #00E5FF66;
+  background:#10263b;
   border-radius:30px;
-  padding:9px 13px;
-  font-size:12px;
+
+  padding:11px 15px;
+  font-size:11px;
+
+  box-shadow:0 0 12px #00E5FF22;
 }
+
+/* =================================
+   7. CONTENIDO
+================================= */
 
 .hero {
-  background:linear-gradient(130deg,#172d49,#111b30);
-  border:1px solid #355071;
+  background:linear-gradient(130deg,#172d49,#11152e);
+
+  border:1px solid #00E5FF55;
   border-radius:17px;
+
   padding:30px;
   min-height:200px;
+
   position:relative;
   overflow:hidden;
-  box-shadow:0 15px 40px #0005;
+
+  box-shadow:
+    0 0 20px #00E5FF12,
+    0 15px 40px #0005;
 }
 
-.hero h2 {color:var(--accent);font-size:25px}
-.hero p {color:#c4d3e8;line-height:1.7;max-width:650px}
+.hero h2 {
+  color:var(--pink);
+  font-size:25px;
+
+  text-shadow:0 0 15px #FF2BD677;
+}
+
+.hero p {
+  color:#c4d3e8;
+  line-height:1.8;
+  max-width:650px;
+  font-size:18px;
+}
 
 .content-box {
   margin-top:22px;
-  padding:23px;
-  border:1px solid #2b4565;
+  padding:25px;
+
+  border:1px solid #234c75;
   border-radius:15px;
-  background:#101b2dcc;
+
+  background:#101b2ddd;
+
   min-height:300px;
+
+  box-shadow:0 0 20px #00E5FF0b;
 }
 
-.content-box h2 {margin-top:0;color:var(--cyan)}
+.content-box h2 {
+  margin-top:0;
+  color:var(--blue);
+
+  text-shadow:0 0 12px #00E5FF55;
+}
+
+/* =================================
+   8. TARJETAS DE DOCUMENTOS
+================================= */
 
 .file-list {
   display:grid;
-  gap:11px;
+  gap:13px;
 }
 
 .file-card {
-  padding:15px;
-  background:#1a2a42;
+  padding:16px;
+
+  background:linear-gradient(110deg,#17213d,#13243b);
+
   border:1px solid #304966;
   border-radius:10px;
+
   display:flex;
   justify-content:space-between;
   align-items:center;
   gap:12px;
   flex-wrap:wrap;
+
+  transition:.2s;
+}
+
+.file-card:hover {
+  border-color:var(--pink);
+  box-shadow:0 0 15px #FF2BD622;
 }
 
 .file-card strong {
-  font-size:14px;
+  font-size:17px;
   overflow-wrap:anywhere;
+  color:#f3f5ff;
 }
 
-.file-card small {color:var(--muted)}
+.file-card small {
+  color:var(--blue);
+  font-size:14px;
+}
 
 .actions {
   display:flex;
-  gap:8px;
+  gap:9px;
   flex-wrap:wrap;
 }
 
 .action {
   border:0;
-  padding:10px 13px;
+  padding:11px 14px;
+
   border-radius:7px;
-  background:var(--accent);
-  color:#151b25;
+
+  background:var(--pink);
+  color:#080B18;
+
   font-weight:bold;
   cursor:pointer;
   text-decoration:none;
+
   font-size:12px;
+  letter-spacing:.7px;
+
+  transition:.2s;
 }
 
 .action.secondary {
-  background:#263e5c;
-  color:#fff;
+  background:#123c65;
+  color:var(--blue);
+  border:1px solid var(--blue);
 }
 
-.action:hover {filter:brightness(1.12)}
+.action:hover {
+  filter:brightness(1.2);
+  transform:translateY(-2px);
+}
+
+/* =================================
+   9. VISOR DE PDF
+================================= */
 
 .viewer {
   margin-top:25px;
+
   background:#0b1423;
-  border:1px solid #344c6c;
+  border:1px solid #00E5FF66;
+
   border-radius:12px;
-  padding:14px;
+  padding:15px;
+
+  box-shadow:0 0 20px #00E5FF11;
 }
 
 .viewer iframe {
   display:block;
   width:100%;
   height:750px;
+
   border:0;
   background:white;
   border-radius:6px;
 }
 
 .viewer-title {
-  color:var(--cyan);
-  margin:5px 0 14px;
+  color:var(--pink);
+  margin:5px 0 15px;
+  font-family:'Orbitron',sans-serif;
+  font-size:15px;
   overflow-wrap:anywhere;
+
+  text-shadow:0 0 10px #FF2BD666;
 }
 
 .empty {
   color:var(--muted);
   padding:20px 0;
-  line-height:1.6;
+  line-height:1.7;
+  font-size:17px;
 }
 
 .loading {
-  color:var(--cyan);
+  color:var(--blue);
   padding:20px;
 }
+
+/* =================================
+   10. PIE DE PÁGINA
+================================= */
 
 footer {
   text-align:center;
   color:#7186a3;
-  font-size:11px;
-  padding:25px;
+
+  font-family:'Orbitron',sans-serif;
+  font-size:10px;
+  letter-spacing:2px;
+
+  padding:30px;
 }
 
-/* VENTANA DE INSTRUCCIONES */
+/* =================================
+   11. EFECTOS DE SELECCIÓN
+================================= */
 
-#instructions {
-  display:none;
-  position:fixed;
-  inset:0;
-  z-index:10;
-  background:#000b;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
+::selection {
+  background:var(--pink);
+  color:white;
 }
 
-.instruction-box {
-  max-width:450px;
-  width:100%;
-  padding:25px;
-  background:#14243b;
-  border:1px solid #47668b;
-  border-radius:15px;
+button:focus-visible,
+a:focus-visible {
+  outline:2px solid var(--blue);
+  outline-offset:3px;
 }
 
-.instruction-box h2 {color:var(--accent)}
-.instruction-box p {line-height:1.7;color:#d1def0}
+/* =================================
+   12. DISEÑO PARA CELULARES
+================================= */
 
 @media(max-width:760px) {
-  .app {display:block}
-  .sidebar {width:100%;padding:15px}
-  .brand {font-size:21px}
-  .nav {grid-template-columns:1fr 1fr}
-  .nav button {font-size:12px;padding:12px 8px}
-  main {padding:17px}
-  .hero {padding:22px}
-  .viewer iframe {height:550px}
-  .file-card {align-items:flex-start}
+
+  .app {
+    display:block;
+  }
+
+  .sidebar {
+    width:100%;
+    padding:15px;
+  }
+
+  .brand {
+    font-size:19px;
+  }
+
+  .nav {
+    grid-template-columns:1fr 1fr;
+  }
+
+  .nav button {
+    font-size:10px;
+    padding:12px 8px;
+  }
+
+  main {
+    padding:17px;
+  }
+
+  .hero {
+    padding:22px;
+  }
+
+  .viewer iframe {
+    height:550px;
+  }
+
+  .file-card {
+    align-items:flex-start;
+  }
+
+  .game-content {
+    padding:35px 17px;
+  }
+
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- PANTALLA INICIAL -->
+<!-- =================================
+     PANTALLA PRINCIPAL
+================================= -->
 
 <section id="gameScreen">
-  <div class="game-content">
-    <div class="game-icon">🏰</div>
-    <div class="game-label">PORTAFOLIO INTERACTIVO</div>
 
-    <h1>FUNDAMENTOS<br>DE BASE DE DATOS</h1>
+  <div class="game-content">
+
+    <div class="game-icon">🏰</div>
+
+    <div class="game-label">
+      PORTAFOLIO INTERACTIVO
+    </div>
+
+    <h1>
+      FUNDAMENTOS<br>
+      DE BASE DE DATOS
+    </h1>
 
     <p>
       Bienvenido a esta aventura académica.
@@ -420,32 +711,51 @@ footer {
       INSTRUCCIONES
     </button>
 
-    <div style="color:#829bb8;font-size:11px;margin-top:25px">
+    <div class="game-footer">
       PORTAFOLIO DIGITAL · 2026
     </div>
+
   </div>
+
 </section>
 
-<!-- INSTRUCCIONES -->
+<!-- =================================
+     VENTANA DE INSTRUCCIONES
+================================= -->
 
 <div id="instructions">
+
   <div class="instruction-box">
-    <h2>Instrucciones</h2>
+
+    <h2>INSTRUCCIONES</h2>
+
     <p>
-      Utiliza el menú lateral para explorar las siete secciones
-      del portafolio. Selecciona los documentos para visualizar
+      Utiliza el menú lateral para explorar las siete
+      secciones del portafolio.
+    </p>
+
+    <p>
+      Selecciona los documentos para visualizar
       su contenido directamente en pantalla.
     </p>
+
     <button class="game-button" onclick="closeInstructions()">
       ENTENDIDO
     </button>
+
   </div>
+
 </div>
 
-<!-- PORTAFOLIO -->
+<!-- =================================
+     APLICACIÓN DEL PORTAFOLIO
+================================= -->
 
 <div id="app">
+
   <div class="app">
+
+    <!-- MENÚ LATERAL -->
 
     <aside class="sidebar">
 
@@ -458,7 +768,7 @@ footer {
       <nav class="nav" id="navigation"></nav>
 
       <button class="back-button" onclick="backToMenu()">
-        ↩ Menú principal
+        ↩ MENÚ PRINCIPAL
       </button>
 
       <div class="side-note">
@@ -467,22 +777,40 @@ footer {
 
     </aside>
 
+    <!-- CONTENIDO DERECHO -->
+
     <main>
 
       <div class="top">
+
         <div>
-          <div class="tag">PORTAFOLIO DIGITAL</div>
-          <h1 id="pageTitle">Portada</h1>
+
+          <div class="tag">
+            PORTAFOLIO DIGITAL
+          </div>
+
+          <h1 id="pageTitle">
+            Portada
+          </h1>
+
           <div class="subtitle">
             Explora los contenidos de Fundamentos de Base de Datos
           </div>
+
         </div>
 
-        <div class="status">● SISTEMA ACTIVO</div>
+        <div class="status">
+          ● SISTEMA ACTIVO
+        </div>
+
       </div>
 
       <section class="content-box" id="content">
-        <p class="loading">Cargando documentos...</p>
+
+        <p class="loading">
+          Cargando documentos...
+        </p>
+
       </section>
 
       <footer>
@@ -492,7 +820,12 @@ footer {
     </main>
 
   </div>
+
 </div>
+
+<!-- =================================
+     JAVASCRIPT
+================================= -->
 
 <script>
 
@@ -502,53 +835,84 @@ const OWNER = "BasilisGmz";
 const REPO = "portafolio-fundamentos-bd";
 const BRANCH = "main";
 
+/* LAS SIETE SECCIONES */
+
 const sections = [
+
   ["Portada","1. Portada"],
+
   ["Autorretrato","2. Autorretrato"],
+
   ["Descripción de la Materia","3. Descripción de la Materia"],
+
   ["Material Didáctico","4. Material Didáctico"],
+
   ["Actividades o Asignaciones","5. Actividades o Asignaciones"],
+
   ["Conclusiones","6. Conclusiones"],
+
   ["Evidencia","Evidencia"]
+
 ];
+
+/* VARIABLES */
 
 let allFiles = [];
 let currentSection = 0;
 let filesLoaded = false;
+let isLoading = false;
 
-/* ELEMENTOS */
+/* ELEMENTOS HTML */
 
 const nav = document.getElementById("navigation");
+
 const content = document.getElementById("content");
+
 const title = document.getElementById("pageTitle");
 
-/* DIRECCIÓN DEL SITIO */
+/* DIRECCIÓN DEL PORTAFOLIO */
 
 function getSiteRoot() {
-  const firstFolder = location.pathname.split("/").filter(Boolean)[0];
+
+  const firstFolder = location.pathname
+    .split("/")
+    .filter(Boolean)[0];
+
   return "/" + (firstFolder || REPO) + "/";
+
 }
+
+/* DIRECCIÓN DE CADA DOCUMENTO */
 
 function getFileUrl(path) {
+
   return getSiteRoot() +
-    path.split("/").map(encodeURIComponent).join("/");
+    path.split("/")
+      .map(encodeURIComponent)
+      .join("/");
+
 }
 
-/* SEGURIDAD DE TEXTO */
+/* PROTEGER LOS TEXTOS */
 
 function escapeHtml(value) {
+
   return String(value).replace(/[&<>"']/g, c => ({
+
     "&":"&amp;",
     "<":"&lt;",
     ">":"&gt;",
     '"':"&quot;",
     "'":"&#39;"
+
   })[c]);
+
 }
 
-/* CREAR MENÚ */
+/* CREAR MENÚ LATERAL */
 
 sections.forEach((section,i) => {
+
   const button = document.createElement("button");
 
   button.innerHTML =
@@ -557,11 +921,16 @@ sections.forEach((section,i) => {
   button.onclick = () => showSection(i);
 
   nav.appendChild(button);
+
 });
 
-/* CARGAR ARCHIVOS DE GITHUB */
+/* CARGAR LOS ARCHIVOS DE GITHUB */
 
 async function loadFiles() {
+
+  if (isLoading) return;
+
+  isLoading = true;
 
   try {
 
@@ -571,20 +940,32 @@ async function loadFiles() {
     const response = await fetch(url);
 
     if (!response.ok) {
+
       throw new Error("No se pudo consultar el repositorio");
+
     }
 
     const data = await response.json();
 
+    if (data.truncated) {
+      throw new Error("El listado de archivos está incompleto");
+    }
+
     allFiles = (data.tree || []).filter(file =>
+
       file.type === "blob" &&
       !file.path.startsWith(".github/")
+
     );
 
     filesLoaded = true;
 
-    if (document.getElementById("app").style.display === "block") {
+    if (
+      document.getElementById("app").style.display === "block"
+    ) {
+
       showSection(currentSection);
+
     }
 
   } catch(error) {
@@ -593,80 +974,123 @@ async function loadFiles() {
 
     filesLoaded = false;
 
-    if (document.getElementById("app").style.display === "block") {
+    if (
+      document.getElementById("app").style.display === "block"
+    ) {
+
       content.innerHTML = `
-        <h2>Error al cargar los documentos</h2>
+
+        <h2>ERROR AL CARGAR DOCUMENTOS</h2>
+
         <p class="empty">
           No se pudieron consultar los archivos de GitHub.
           Comprueba tu conexión e inténtalo nuevamente.
         </p>
+
         <button class="action" onclick="loadFiles()">
           REINTENTAR
         </button>
+
       `;
+
     }
 
+  } finally {
+
+    isLoading = false;
+
   }
+
 }
 
-/* BUSCAR ARCHIVOS DE UNA CARPETA */
+/* BUSCAR DOCUMENTOS DE CADA CARPETA */
 
 function matchingFiles(folder) {
 
   const prefix = folder.toLowerCase() + "/";
 
-  return allFiles.filter(file =>
-    file.path.toLowerCase().startsWith(prefix)
-  ).sort((a,b) =>
-    a.path.localeCompare(b.path, "es", {
-      numeric:true,
-      sensitivity:"base"
-    })
-  );
+  return allFiles
+
+    .filter(file =>
+
+      file.path.toLowerCase().startsWith(prefix)
+
+    )
+
+    .sort((a,b) =>
+
+      a.path.localeCompare(b.path,"es",{
+        numeric:true,
+        sensitivity:"base"
+      })
+
+    );
 
 }
 
-/* CREAR TARJETA DE DOCUMENTO */
+/* CREAR TARJETAS */
 
 function makeFileCard(file) {
 
   const name = file.path.split("/").pop();
+
   const isPdf = name.toLowerCase().endsWith(".pdf");
+
   const index = allFiles.indexOf(file);
+
   const url = getFileUrl(file.path);
 
   return `
+
     <div class="file-card">
 
       <div>
-        <strong>${escapeHtml(name)}</strong>
+
+        <strong>
+          ${escapeHtml(name)}
+        </strong>
+
         <br>
-        <small>${isPdf ? "📄 Documento PDF" : "📁 Archivo"}</small>
+
+        <small>
+          ${isPdf ? "📄 DOCUMENTO PDF" : "📁 ARCHIVO"}
+        </small>
+
       </div>
 
       <div class="actions">
 
         ${isPdf ? `
-          <button class="action"
+
+          <button
+            class="action"
             onclick="previewFile(${index})">
+
             👁 VER DOCUMENTO
+
           </button>
+
         ` : ""}
 
-        <a class="action secondary"
-           href="${url}"
-           target="_blank"
-           rel="noopener">
+        <a
+          class="action secondary"
+          href="${url}"
+          target="_blank"
+          rel="noopener">
+
           ABRIR
+
         </a>
 
       </div>
 
     </div>
+
   `;
+
 }
 
-/* VISTA PREVIA DEL PDF */
+/* VISUALIZAR DOCUMENTOS PDF */
 
 function previewFile(index) {
 
@@ -675,6 +1099,7 @@ function previewFile(index) {
   if (!file) return;
 
   const name = file.path.split("/").pop();
+
   const url = getFileUrl(file.path);
 
   const viewer = document.getElementById("pdfViewer");
@@ -682,68 +1107,112 @@ function previewFile(index) {
   if (!viewer) return;
 
   viewer.innerHTML = `
+
     <h3 class="viewer-title">
+
       📄 ${escapeHtml(name)}
+
     </h3>
 
     <iframe
+
       src="${url}#toolbar=1&navpanes=0"
-      title="Vista previa de ${escapeHtml(name)}"
+
+      title="Vista previa del documento"
+
       loading="lazy">
+
     </iframe>
 
     <p class="empty">
+
       Si el documento no se visualiza,
       puedes abrirlo en otra pestaña.
+
     </p>
 
-    <a class="action secondary"
-       href="${url}"
-       target="_blank"
-       rel="noopener">
+    <a
+
+      class="action secondary"
+
+      href="${url}"
+
+      target="_blank"
+
+      rel="noopener">
+
       ABRIR EN OTRA PESTAÑA
+
     </a>
+
   `;
 
   viewer.scrollIntoView({
+
     behavior:"smooth",
+
     block:"start"
+
   });
 
 }
 
-/* ABRIR UNA SECCIÓN */
+/* MOSTRAR LAS SECCIONES */
 
 function showSection(index) {
 
   currentSection = index;
 
   document.querySelectorAll(".nav button")
+
     .forEach((button,i) => {
-      button.classList.toggle("active",i === index);
+
+      button.classList.toggle(
+        "active",
+        i === index
+      );
+
     });
 
   title.textContent = sections[index][0];
 
   if (!filesLoaded) {
+
     content.innerHTML = `
-      <p class="loading">Cargando documentos del portafolio...</p>
+
+      <p class="loading">
+        CARGANDO DOCUMENTOS DEL PORTAFOLIO...
+      </p>
+
     `;
+
     return;
+
   }
 
   const folder = sections[index][1];
 
   const files = matchingFiles(folder);
 
-  let html = `<h2>${escapeHtml(sections[index][0])}</h2>`;
+  let html = `
+
+    <h2>
+      ${escapeHtml(sections[index][0])}
+    </h2>
+
+  `;
 
   /* PORTADA */
 
   if (index === 0) {
 
     const portada = files.find(file =>
-      file.path.split("/").pop().toLowerCase() === "portada fbd.pdf"
+
+      file.path
+        .split("/")
+        .pop()
+        .toLowerCase() === "portada fbd.pdf"
+
     );
 
     if (portada) {
@@ -751,20 +1220,30 @@ function showSection(index) {
       const fileIndex = allFiles.indexOf(portada);
 
       html += `
+
         <p class="empty">
+
           Bienvenido a mi portafolio digital de
           Fundamentos de Base de Datos.
+
         </p>
 
         <div class="file-list">
+
           ${makeFileCard(portada)}
+
         </div>
 
         <div id="pdfViewer" class="viewer">
+
           <p class="loading">
-            Cargando PORTADA FBD.pdf...
+
+            CARGANDO PORTADA FBD.pdf...
+
           </p>
+
         </div>
+
       `;
 
       content.innerHTML = html;
@@ -776,45 +1255,64 @@ function showSection(index) {
     } else {
 
       html += `
+
         <p class="empty">
-          No se encontró el archivo PORTADA FBD.pdf
-          dentro de la carpeta 1. Portada.
+
+          No se encontró PORTADA FBD.pdf dentro
+          de la carpeta 1. Portada.
+
         </p>
+
       `;
 
     }
 
   }
 
-  /* RESTO DE SECCIONES */
+  /* DEMÁS SECCIONES */
 
   if (files.length > 0) {
 
     html += `
+
       <p class="empty">
-        Documentos disponibles en esta sección:
+
+        DOCUMENTOS DISPONIBLES:
         ${files.length}
+
       </p>
 
       <div class="file-list">
+
         ${files.map(makeFileCard).join("")}
+
       </div>
 
       <div id="pdfViewer" class="viewer">
+
         <p class="empty">
-          Selecciona «VER DOCUMENTO» para leer
-          el PDF directamente aquí.
+
+          Selecciona VER DOCUMENTO para visualizar
+          el contenido directamente aquí.
+
         </p>
+
       </div>
+
     `;
 
   } else {
 
     html += `
+
       <p class="empty">
+
         No se encontraron archivos en esta carpeta.
-        Comprueba que los documentos estén subidos al repositorio.
+        Comprueba que los documentos estén subidos
+        correctamente al repositorio.
+
       </p>
+
     `;
 
   }
@@ -823,7 +1321,7 @@ function showSection(index) {
 
 }
 
-/* INICIAR PORTAFOLIO */
+/* COMENZAR PORTAFOLIO */
 
 function startPortfolio() {
 
@@ -832,18 +1330,24 @@ function startPortfolio() {
   document.getElementById("app").style.display = "block";
 
   if (filesLoaded) {
+
     showSection(0);
+
   } else {
+
     content.innerHTML = `
+
       <p class="loading">
-        Preparando tu portafolio...
+        PREPARANDO TU PORTAFOLIO...
       </p>
+
     `;
+
   }
 
 }
 
-/* VOLVER AL MENÚ PRINCIPAL */
+/* REGRESAR AL MENÚ PRINCIPAL */
 
 function backToMenu() {
 
@@ -856,14 +1360,18 @@ function backToMenu() {
 /* INSTRUCCIONES */
 
 function showInstructions() {
+
   document.getElementById("instructions").style.display = "flex";
+
 }
 
 function closeInstructions() {
+
   document.getElementById("instructions").style.display = "none";
+
 }
 
-/* INICIAR CARGA */
+/* INICIAR SISTEMA */
 
 loadFiles();
 
@@ -871,3 +1379,4 @@ loadFiles();
 
 </body>
 </html>
+
