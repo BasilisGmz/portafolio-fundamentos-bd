@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fundamento de Base de Datos</title>
+<title>Fundamentos de Base de Datos | Portafolio</title>
 
 <style>
 :root {
@@ -17,24 +17,131 @@
   --muted:#9aacc5;
 }
 * {box-sizing:border-box}
+
 body {
   margin:0;
   font-family:Arial,sans-serif;
-  background:radial-gradient(ellipse at top,#172b48,#080e1b 70%);
+  background:var(--bg);
   color:var(--text);
   min-height:100vh;
 }
-.app {display:flex;min-height:100vh}
+
+/* PANTALLA PRINCIPAL DEL JUEGO */
+
+#gameScreen {
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:25px;
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(ellipse at 50% 80%,#285078 0%,transparent 48%),
+    radial-gradient(circle at 15% 20%,#245477 0%,transparent 35%),
+    linear-gradient(145deg,#050b19,#142d4b 55%,#080e1b);
+}
+
+#gameScreen:before,
+#gameScreen:after {
+  content:"";
+  position:absolute;
+  border-radius:50%;
+  border:1px solid #31d9ef55;
+  width:400px;
+  height:400px;
+  box-shadow:0 0 0 35px #31d9ef0c,
+             0 0 0 75px #31d9ef08;
+}
+#gameScreen:before {top:-230px;left:-150px}
+#gameScreen:after {bottom:-280px;right:-120px}
+
+.game-content {
+  position:relative;
+  z-index:2;
+  width:min(650px,100%);
+  padding:45px 20px;
+  background:#091427bb;
+  border:1px solid #47668b;
+  border-radius:22px;
+  box-shadow:0 20px 70px #0009;
+  backdrop-filter:blur(10px);
+}
+
+.game-icon {
+  font-size:65px;
+  margin-bottom:10px;
+  filter:drop-shadow(0 0 15px #ffad3277);
+}
+
+.game-label {
+  color:var(--cyan);
+  letter-spacing:5px;
+  font-size:12px;
+  font-weight:bold;
+}
+
+.game-content h1 {
+  color:var(--accent);
+  font-size:clamp(30px,6vw,50px);
+  line-height:1.15;
+  margin:20px 0;
+  text-shadow:0 0 20px #ffad3255;
+}
+
+.game-content p {
+  color:#c2d4ed;
+  line-height:1.7;
+  margin-bottom:30px;
+}
+
+.game-button {
+  display:block;
+  width:min(330px,100%);
+  margin:13px auto;
+  padding:16px;
+  border:1px solid #ffbd56;
+  border-radius:10px;
+  color:#fff;
+  background:linear-gradient(100deg,#9d5d18,#49341d);
+  font-size:15px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:.25s;
+}
+.game-button:hover {
+  transform:scale(1.04);
+  box-shadow:0 0 25px #ffad3266;
+}
+.game-button.secondary {
+  background:#192c47;
+  border-color:#436587;
+}
+
+/* APLICACIÓN */
+
+#app {
+  display:none;
+  min-height:100vh;
+}
+
+.app {
+  display:flex;
+  min-height:100vh;
+}
+
 .sidebar {
-  width:290px;
+  width:285px;
   flex-shrink:0;
-  background:rgba(9,17,32,.97);
+  background:rgba(9,17,32,.98);
   border-right:1px solid #29405e;
-  padding:25px 17px;
+  padding:20px 14px;
   display:flex;
   flex-direction:column;
-  gap:20px;
+  gap:18px;
 }
+
 .brand {
   color:var(--accent);
   font-size:23px;
@@ -45,10 +152,15 @@ body {
   padding:15px 5px;
   border-bottom:1px solid #31435c;
 }
-.nav {display:grid;gap:10px}
+
+.nav {
+  display:grid;
+  gap:10px;
+}
+
 .nav button {
   text-align:left;
-  padding:15px 12px;
+  padding:14px 12px;
   color:#dce9fa;
   background:linear-gradient(110deg,#17263d,#101a2c);
   border:1px solid #2b4565;
@@ -57,21 +169,43 @@ body {
   font-size:14px;
   transition:.2s;
 }
-.nav button:hover,.nav button.active {
+
+.nav button:hover,
+.nav button.active {
   color:#fff;
   border-color:var(--accent);
   background:linear-gradient(100deg,#49341d,#1b2a40);
   transform:translateX(4px);
   box-shadow:0 0 14px #ffad3230;
 }
-.nav button span {color:var(--accent);margin-right:7px}
+
+.nav button span {
+  color:var(--accent);
+  margin-right:7px;
+}
+
 .side-note {
   color:var(--muted);
   font-size:11px;
   margin-top:auto;
   text-align:center;
 }
-main {flex:1;min-width:0;padding:30px}
+
+.back-button {
+  border:1px solid #385471;
+  border-radius:8px;
+  background:#192b43;
+  color:white;
+  padding:11px;
+  cursor:pointer;
+}
+
+main {
+  flex:1;
+  min-width:0;
+  padding:30px;
+}
+
 .top {
   display:flex;
   justify-content:space-between;
@@ -80,14 +214,24 @@ main {flex:1;min-width:0;padding:30px}
   flex-wrap:wrap;
   margin-bottom:25px;
 }
+
 .tag {
   color:var(--cyan);
   font-size:12px;
   letter-spacing:3px;
   font-weight:bold;
 }
-h1 {font-size:clamp(24px,4vw,38px);margin:8px 0}
-.subtitle {color:var(--muted);font-size:14px}
+
+h1 {
+  font-size:clamp(24px,4vw,38px);
+  margin:8px 0;
+}
+
+.subtitle {
+  color:var(--muted);
+  font-size:14px;
+}
+
 .status {
   color:#7df0b0;
   border:1px solid #286b50;
@@ -96,36 +240,37 @@ h1 {font-size:clamp(24px,4vw,38px);margin:8px 0}
   padding:9px 13px;
   font-size:12px;
 }
+
 .hero {
   background:linear-gradient(130deg,#172d49,#111b30);
   border:1px solid #355071;
   border-radius:17px;
   padding:30px;
-  min-height:220px;
+  min-height:200px;
   position:relative;
   overflow:hidden;
   box-shadow:0 15px 40px #0005;
 }
-.hero:after {
-  content:"";
-  position:absolute;
-  width:200px;height:200px;
-  border:1px solid #31d9ef55;
-  border-radius:50%;
-  right:-55px;top:-70px;
-  box-shadow:0 0 0 25px #31d9ef0c,0 0 0 55px #31d9ef08;
-}
+
 .hero h2 {color:var(--accent);font-size:25px}
 .hero p {color:#c4d3e8;line-height:1.7;max-width:650px}
+
 .content-box {
   margin-top:22px;
   padding:23px;
   border:1px solid #2b4565;
   border-radius:15px;
   background:#101b2dcc;
+  min-height:300px;
 }
+
 .content-box h2 {margin-top:0;color:var(--cyan)}
-.file-list {display:grid;gap:11px}
+
+.file-list {
+  display:grid;
+  gap:11px;
+}
+
 .file-card {
   padding:15px;
   background:#1a2a42;
@@ -137,12 +282,23 @@ h1 {font-size:clamp(24px,4vw,38px);margin:8px 0}
   gap:12px;
   flex-wrap:wrap;
 }
-.file-card strong {font-size:14px;overflow-wrap:anywhere}
+
+.file-card strong {
+  font-size:14px;
+  overflow-wrap:anywhere;
+}
+
 .file-card small {color:var(--muted)}
-.actions {display:flex;gap:8px}
+
+.actions {
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
 .action {
   border:0;
-  padding:9px 12px;
+  padding:10px 13px;
   border-radius:7px;
   background:var(--accent);
   color:#151b25;
@@ -151,216 +307,567 @@ h1 {font-size:clamp(24px,4vw,38px);margin:8px 0}
   text-decoration:none;
   font-size:12px;
 }
-.action.secondary {background:#263e5c;color:#fff}
-.week {
-  margin:18px 0 10px;
-  color:var(--accent);
-  border-bottom:1px solid #3a4e68;
-  padding-bottom:8px;
-  font-size:16px;
+
+.action.secondary {
+  background:#263e5c;
+  color:#fff;
 }
+
+.action:hover {filter:brightness(1.12)}
+
 .viewer {
-  margin-top:20px;
+  margin-top:25px;
   background:#0b1423;
   border:1px solid #344c6c;
   border-radius:12px;
-  padding:12px;
+  padding:14px;
 }
-.viewer iframe {width:100%;height:650px;border:0;background:white}
-.viewer-title {color:var(--cyan);margin:5px 0 12px}
-.empty {color:var(--muted);padding:20px 0;line-height:1.6}
-footer {text-align:center;color:#7186a3;font-size:11px;padding:25px}
+
+.viewer iframe {
+  display:block;
+  width:100%;
+  height:750px;
+  border:0;
+  background:white;
+  border-radius:6px;
+}
+
+.viewer-title {
+  color:var(--cyan);
+  margin:5px 0 14px;
+  overflow-wrap:anywhere;
+}
+
+.empty {
+  color:var(--muted);
+  padding:20px 0;
+  line-height:1.6;
+}
+
+.loading {
+  color:var(--cyan);
+  padding:20px;
+}
+
+footer {
+  text-align:center;
+  color:#7186a3;
+  font-size:11px;
+  padding:25px;
+}
+
+/* VENTANA DE INSTRUCCIONES */
+
+#instructions {
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:10;
+  background:#000b;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.instruction-box {
+  max-width:450px;
+  width:100%;
+  padding:25px;
+  background:#14243b;
+  border:1px solid #47668b;
+  border-radius:15px;
+}
+
+.instruction-box h2 {color:var(--accent)}
+.instruction-box p {line-height:1.7;color:#d1def0}
+
 @media(max-width:760px) {
- .app {display:block}
- .sidebar {width:100%;padding:15px}
- .brand {font-size:21px}
- .nav {grid-template-columns:1fr 1fr}
- .nav button {font-size:12px;padding:12px 8px}
- main {padding:17px}
- .hero {padding:22px}
- .viewer iframe {height:500px}
+  .app {display:block}
+  .sidebar {width:100%;padding:15px}
+  .brand {font-size:21px}
+  .nav {grid-template-columns:1fr 1fr}
+  .nav button {font-size:12px;padding:12px 8px}
+  main {padding:17px}
+  .hero {padding:22px}
+  .viewer iframe {height:550px}
+  .file-card {align-items:flex-start}
 }
 </style>
 </head>
 
 <body>
-<div class="app">
-<aside class="sidebar">
-  <div class="brand">FUNDAMENTO<br>DE BASE DE DATOS</div>
-  <nav class="nav" id="navigation"></nav>
-  <div class="side-note">PORTAFOLIO DIGITAL · EXPLORACIÓN</div>
-</aside>
 
-<main>
-  <div class="top">
-    <div>
-      <div class="tag">PORTAFOLIO DIGITAL</div>
-      <h1 id="pageTitle">Bienvenido</h1>
-      <div class="subtitle">Explora los contenidos de Fundamentos de Base de Datos</div>
+<!-- PANTALLA INICIAL -->
+
+<section id="gameScreen">
+  <div class="game-content">
+    <div class="game-icon">🏰</div>
+    <div class="game-label">PORTAFOLIO INTERACTIVO</div>
+
+    <h1>FUNDAMENTOS<br>DE BASE DE DATOS</h1>
+
+    <p>
+      Bienvenido a esta aventura académica.
+      Explora los conocimientos, trabajos y actividades
+      desarrollados durante la materia.
+    </p>
+
+    <button class="game-button" onclick="startPortfolio()">
+      ▶ COMENZAR
+    </button>
+
+    <button class="game-button secondary" onclick="showInstructions()">
+      INSTRUCCIONES
+    </button>
+
+    <div style="color:#829bb8;font-size:11px;margin-top:25px">
+      PORTAFOLIO DIGITAL · 2026
     </div>
-    <div class="status">● SISTEMA ACTIVO</div>
   </div>
+</section>
 
-  <section class="hero" id="hero">
-    <div class="tag">BIENVENIDO A MI PORTAFOLIO</div>
-    <h2>Explora, aprende y descubre</h2>
-    <p>Este espacio reúne los trabajos, materiales, actividades y evidencias desarrollados durante la materia Fundamentos de Base de Datos. Selecciona una sección para comenzar tu recorrido.</p>
-  </section>
+<!-- INSTRUCCIONES -->
 
-  <section class="content-box" id="content">
-    <h2>Tu recorrido comienza aquí</h2>
-    <p class="empty">Selecciona una sección del panel izquierdo para consultar su contenido.</p>
-  </section>
-  <footer>PORTAFOLIO ACADÉMICO · FUNDAMENTOS DE BASE DE DATOS</footer>
-</main>
+<div id="instructions">
+  <div class="instruction-box">
+    <h2>Instrucciones</h2>
+    <p>
+      Utiliza el menú lateral para explorar las siete secciones
+      del portafolio. Selecciona los documentos para visualizar
+      su contenido directamente en pantalla.
+    </p>
+    <button class="game-button" onclick="closeInstructions()">
+      ENTENDIDO
+    </button>
+  </div>
+</div>
+
+<!-- PORTAFOLIO -->
+
+<div id="app">
+  <div class="app">
+
+    <aside class="sidebar">
+
+      <div class="brand">
+        FUNDAMENTO<br>
+        DE BASE DE<br>
+        DATOS
+      </div>
+
+      <nav class="nav" id="navigation"></nav>
+
+      <button class="back-button" onclick="backToMenu()">
+        ↩ Menú principal
+      </button>
+
+      <div class="side-note">
+        PORTAFOLIO DIGITAL · EXPLORACIÓN
+      </div>
+
+    </aside>
+
+    <main>
+
+      <div class="top">
+        <div>
+          <div class="tag">PORTAFOLIO DIGITAL</div>
+          <h1 id="pageTitle">Portada</h1>
+          <div class="subtitle">
+            Explora los contenidos de Fundamentos de Base de Datos
+          </div>
+        </div>
+
+        <div class="status">● SISTEMA ACTIVO</div>
+      </div>
+
+      <section class="content-box" id="content">
+        <p class="loading">Cargando documentos...</p>
+      </section>
+
+      <footer>
+        PORTAFOLIO ACADÉMICO · FUNDAMENTOS DE BASE DE DATOS
+      </footer>
+
+    </main>
+
+  </div>
 </div>
 
 <script>
-const sections = [
- ["Portada","1. Portada"],
- ["Autorretrato","2. Autorretrato"],
- ["Descripción de la Materia","3. Descripción de la Materia"],
- ["Material Didáctico","4. Material Didáctico"],
- ["Actividades o Asignaciones","5. Actividades o Asignaciones"],
- ["Conclusiones","6. Conclusiones"],
- ["Evidencia","Evidencia"]
-];
 
-const weeks = [
-"Conceptos de Bases de Datos",
-"Sistemas Gestores de Base de Datos",
-"Modelaje conceptual y fundamentos del modelo Relacional de Bases de Datos",
-"Taller de Laboratorio # 1",
-"Integridad Referencial - Definida por el usuario",
-"Control de concurrencias en Base de Datos",
-"Introducción a los conceptos básicos de seguridad de base de datos",
-"Vistas y Procedimientos Almacenados",
-"Metabase",
-"Modelado de Bases de Datos NoSQL",
-"Examen Parcial # 2",
-"Nuevos modelos de Bases de Datos (integración de MongoDB y Python)",
-"Proyectos de integración MongoDB con Python"
+/* CONFIGURACIÓN DEL REPOSITORIO */
+
+const OWNER = "BasilisGmz";
+const REPO = "portafolio-fundamentos-bd";
+const BRANCH = "main";
+
+const sections = [
+  ["Portada","1. Portada"],
+  ["Autorretrato","2. Autorretrato"],
+  ["Descripción de la Materia","3. Descripción de la Materia"],
+  ["Material Didáctico","4. Material Didáctico"],
+  ["Actividades o Asignaciones","5. Actividades o Asignaciones"],
+  ["Conclusiones","6. Conclusiones"],
+  ["Evidencia","Evidencia"]
 ];
 
 let allFiles = [];
 let currentSection = 0;
+let filesLoaded = false;
+
+/* ELEMENTOS */
 
 const nav = document.getElementById("navigation");
 const content = document.getElementById("content");
 const title = document.getElementById("pageTitle");
 
-sections.forEach((section,i)=>{
- const button=document.createElement("button");
- button.innerHTML=`<span>0${i+1}</span>${section[0]}`;
- button.onclick=()=>showSection(i);
- nav.appendChild(button);
+/* DIRECCIÓN DEL SITIO */
+
+function getSiteRoot() {
+  const firstFolder = location.pathname.split("/").filter(Boolean)[0];
+  return "/" + (firstFolder || REPO) + "/";
+}
+
+function getFileUrl(path) {
+  return getSiteRoot() +
+    path.split("/").map(encodeURIComponent).join("/");
+}
+
+/* SEGURIDAD DE TEXTO */
+
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"']/g, c => ({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#39;"
+  })[c]);
+}
+
+/* CREAR MENÚ */
+
+sections.forEach((section,i) => {
+  const button = document.createElement("button");
+
+  button.innerHTML =
+    `<span>0${i+1}</span>${escapeHtml(section[0])}`;
+
+  button.onclick = () => showSection(i);
+
+  nav.appendChild(button);
 });
 
-function repositoryInfo(){
- const host=location.hostname;
- const owner=host.endsWith(".github.io")
-   ?host.replace(".github.io","")
-   :null;
- const repo=location.pathname.split("/").filter(Boolean)[0];
- return {owner,repo};
+/* CARGAR ARCHIVOS DE GITHUB */
+
+async function loadFiles() {
+
+  try {
+
+    const url =
+      `https://api.github.com/repos/${OWNER}/${REPO}/git/trees/${BRANCH}?recursive=1`;
+
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error("No se pudo consultar el repositorio");
+    }
+
+    const data = await response.json();
+
+    allFiles = (data.tree || []).filter(file =>
+      file.type === "blob" &&
+      !file.path.startsWith(".github/")
+    );
+
+    filesLoaded = true;
+
+    if (document.getElementById("app").style.display === "block") {
+      showSection(currentSection);
+    }
+
+  } catch(error) {
+
+    console.error(error);
+
+    filesLoaded = false;
+
+    if (document.getElementById("app").style.display === "block") {
+      content.innerHTML = `
+        <h2>Error al cargar los documentos</h2>
+        <p class="empty">
+          No se pudieron consultar los archivos de GitHub.
+          Comprueba tu conexión e inténtalo nuevamente.
+        </p>
+        <button class="action" onclick="loadFiles()">
+          REINTENTAR
+        </button>
+      `;
+    }
+
+  }
 }
 
-async function loadFiles(){
- const {owner,repo}=repositoryInfo();
- if(!owner || !repo){
-  content.innerHTML="<h2>Archivos del portafolio</h2><p class='empty'>No se pudo identificar el repositorio. Revisa la configuración de publicación de GitHub Pages.</p>";
-  return;
- }
- try {
-  const response=await fetch(`https://api.github.com/repos/${owner}/${repo}/git/trees/main?recursive=1`);
-  if(!response.ok) throw new Error("No se pudo consultar el repositorio");
-  const data=await response.json();
-  allFiles=(data.tree||[]).filter(x=>x.type==="blob");
-  showSection(currentSection);
- } catch(error){
-  content.innerHTML="<h2>Contenido</h2><p class='empty'>No se pudieron cargar los archivos. Comprueba tu conexión y que los documentos estén publicados en GitHub.</p>";
- }
+/* BUSCAR ARCHIVOS DE UNA CARPETA */
+
+function matchingFiles(folder) {
+
+  const prefix = folder.toLowerCase() + "/";
+
+  return allFiles.filter(file =>
+    file.path.toLowerCase().startsWith(prefix)
+  ).sort((a,b) =>
+    a.path.localeCompare(b.path, "es", {
+      numeric:true,
+      sensitivity:"base"
+    })
+  );
+
 }
 
-function matchingFiles(folder){
- return allFiles.filter(file=>{
-  const path=file.path.toLowerCase();
-  return path.includes(folder.toLowerCase()+"/") ||
-         path.startsWith(folder.toLowerCase()+"/");
- });
+/* CREAR TARJETA DE DOCUMENTO */
+
+function makeFileCard(file) {
+
+  const name = file.path.split("/").pop();
+  const isPdf = name.toLowerCase().endsWith(".pdf");
+  const index = allFiles.indexOf(file);
+  const url = getFileUrl(file.path);
+
+  return `
+    <div class="file-card">
+
+      <div>
+        <strong>${escapeHtml(name)}</strong>
+        <br>
+        <small>${isPdf ? "📄 Documento PDF" : "📁 Archivo"}</small>
+      </div>
+
+      <div class="actions">
+
+        ${isPdf ? `
+          <button class="action"
+            onclick="previewFile(${index})">
+            👁 VER DOCUMENTO
+          </button>
+        ` : ""}
+
+        <a class="action secondary"
+           href="${url}"
+           target="_blank"
+           rel="noopener">
+          ABRIR
+        </a>
+
+      </div>
+
+    </div>
+  `;
 }
 
-function makeFileCard(file){
- const {owner,repo}=repositoryInfo();
- const raw=`https://raw.githubusercontent.com/${owner}/${repo}/main/${file.path.split("/").map(encodeURIComponent).join("/")}`;
- const name=file.path.split("/").pop();
- const isPdf=name.toLowerCase().endsWith(".pdf");
- return `<div class="file-card">
-   <div><strong>${escapeHtml(name)}</strong><br><small>${isPdf?"Documento PDF":"Archivo"}</small></div>
-   <div class="actions">
-    ${isPdf?`<button class="action" onclick="preview('${encodeURIComponent(file.path)}')">Vista previa</button>`:""}
-    <a class="action secondary" href="${raw}" target="_blank">Abrir</a>
-   </div>
-  </div>`;
-}
+/* VISTA PREVIA DEL PDF */
 
-function escapeHtml(value){
- return value.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-}
+function previewFile(index) {
 
-function preview(encodedPath){
- const {owner,repo}=repositoryInfo();
- const path=decodeURIComponent(encodedPath);
- const raw=`https://raw.githubusercontent.com/${owner}/${repo}/main/${path.split("/").map(encodeURIComponent).join("/")}`;
- const viewer=document.getElementById("pdfViewer");
- viewer.innerHTML=`<h3 class="viewer-title">${escapeHtml(path.split("/").pop())}</h3>
- <iframe src="${raw}" title="Vista previa del PDF"></iframe>
- <p><a class="action" href="${raw}" target="_blank">Abrir PDF</a></p>`;
- viewer.scrollIntoView({behavior:"smooth",block:"start"});
-}
+  const file = allFiles[index];
 
-function showSection(index){
- currentSection=index;
- document.querySelectorAll(".nav button").forEach((b,i)=>b.classList.toggle("active",i===index));
- title.textContent=sections[index][0];
- document.getElementById("hero").style.display="none";
+  if (!file) return;
 
- if(index===0){
-  document.getElementById("hero").style.display="block";
-  content.innerHTML="<h2>Portada</h2><p class='empty'>Bienvenido a mi portafolio digital de Fundamentos de Base de Datos.</p>";
-  return;
- }
+  const name = file.path.split("/").pop();
+  const url = getFileUrl(file.path);
 
- const folder=sections[index][1];
- const files=matchingFiles(folder);
- let html=`<h2>${sections[index][0]}</h2>`;
- if(!files.length){
-  html+="<p class='empty'>No se encontraron archivos en esta sección. Comprueba que la carpeta esté subida al repositorio y que tenga contenido.</p>";
-  content.innerHTML=html;
-  return;
- }
+  const viewer = document.getElementById("pdfViewer");
 
- if(index===3 || index===4){
-  weeks.forEach((week,i)=>{
-   const weekFiles=files.filter(f=>{
-    const path=f.path.toLowerCase();
-    const num=String(i+1);
-    return new RegExp(`semana\\s*${num}\\b|semana[-_ ]?${num}\\b|week[-_ ]?${num}\\b|semana\\s*0${num}\\b`).test(path)
-      || path.includes(`semana ${num}`);
-   });
-   html+=`<div class="week">SEMANA ${["I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII","XIII"][i]} · ${week}</div>`;
-   html+=weekFiles.length?`<div class="file-list">${weekFiles.map(makeFileCard).join("")}</div>`:"<p class='empty'>No se identificaron archivos con el nombre de esta semana.</p>";
+  if (!viewer) return;
+
+  viewer.innerHTML = `
+    <h3 class="viewer-title">
+      📄 ${escapeHtml(name)}
+    </h3>
+
+    <iframe
+      src="${url}#toolbar=1&navpanes=0"
+      title="Vista previa de ${escapeHtml(name)}"
+      loading="lazy">
+    </iframe>
+
+    <p class="empty">
+      Si el documento no se visualiza,
+      puedes abrirlo en otra pestaña.
+    </p>
+
+    <a class="action secondary"
+       href="${url}"
+       target="_blank"
+       rel="noopener">
+      ABRIR EN OTRA PESTAÑA
+    </a>
+  `;
+
+  viewer.scrollIntoView({
+    behavior:"smooth",
+    block:"start"
   });
-  html+=`<div class="week">OTROS DOCUMENTOS</div><div class="file-list">${files.filter(f=>!weeks.some((w,i)=>new RegExp(`semana\\s*0?${i+1}\\b|semana[-_ ]?0?${i+1}\\b`,"i").test(f.path))).map(makeFileCard).join("")}</div>`;
- } else {
-  html+=`<div class="file-list">${files.map(makeFileCard).join("")}</div>`;
- }
- html+=`<div id="pdfViewer" class="viewer"><p class="empty">Selecciona «Vista previa» para leer un PDF aquí mismo.</p></div>`;
- content.innerHTML=html;
+
 }
 
-showSection(0);
+/* ABRIR UNA SECCIÓN */
+
+function showSection(index) {
+
+  currentSection = index;
+
+  document.querySelectorAll(".nav button")
+    .forEach((button,i) => {
+      button.classList.toggle("active",i === index);
+    });
+
+  title.textContent = sections[index][0];
+
+  if (!filesLoaded) {
+    content.innerHTML = `
+      <p class="loading">Cargando documentos del portafolio...</p>
+    `;
+    return;
+  }
+
+  const folder = sections[index][1];
+
+  const files = matchingFiles(folder);
+
+  let html = `<h2>${escapeHtml(sections[index][0])}</h2>`;
+
+  /* PORTADA */
+
+  if (index === 0) {
+
+    const portada = files.find(file =>
+      file.path.split("/").pop().toLowerCase() === "portada fbd.pdf"
+    );
+
+    if (portada) {
+
+      const fileIndex = allFiles.indexOf(portada);
+
+      html += `
+        <p class="empty">
+          Bienvenido a mi portafolio digital de
+          Fundamentos de Base de Datos.
+        </p>
+
+        <div class="file-list">
+          ${makeFileCard(portada)}
+        </div>
+
+        <div id="pdfViewer" class="viewer">
+          <p class="loading">
+            Cargando PORTADA FBD.pdf...
+          </p>
+        </div>
+      `;
+
+      content.innerHTML = html;
+
+      previewFile(fileIndex);
+
+      return;
+
+    } else {
+
+      html += `
+        <p class="empty">
+          No se encontró el archivo PORTADA FBD.pdf
+          dentro de la carpeta 1. Portada.
+        </p>
+      `;
+
+    }
+
+  }
+
+  /* RESTO DE SECCIONES */
+
+  if (files.length > 0) {
+
+    html += `
+      <p class="empty">
+        Documentos disponibles en esta sección:
+        ${files.length}
+      </p>
+
+      <div class="file-list">
+        ${files.map(makeFileCard).join("")}
+      </div>
+
+      <div id="pdfViewer" class="viewer">
+        <p class="empty">
+          Selecciona «VER DOCUMENTO» para leer
+          el PDF directamente aquí.
+        </p>
+      </div>
+    `;
+
+  } else {
+
+    html += `
+      <p class="empty">
+        No se encontraron archivos en esta carpeta.
+        Comprueba que los documentos estén subidos al repositorio.
+      </p>
+    `;
+
+  }
+
+  content.innerHTML = html;
+
+}
+
+/* INICIAR PORTAFOLIO */
+
+function startPortfolio() {
+
+  document.getElementById("gameScreen").style.display = "none";
+
+  document.getElementById("app").style.display = "block";
+
+  if (filesLoaded) {
+    showSection(0);
+  } else {
+    content.innerHTML = `
+      <p class="loading">
+        Preparando tu portafolio...
+      </p>
+    `;
+  }
+
+}
+
+/* VOLVER AL MENÚ PRINCIPAL */
+
+function backToMenu() {
+
+  document.getElementById("app").style.display = "none";
+
+  document.getElementById("gameScreen").style.display = "flex";
+
+}
+
+/* INSTRUCCIONES */
+
+function showInstructions() {
+  document.getElementById("instructions").style.display = "flex";
+}
+
+function closeInstructions() {
+  document.getElementById("instructions").style.display = "none";
+}
+
+/* INICIAR CARGA */
+
 loadFiles();
+
 </script>
+
 </body>
 </html>
